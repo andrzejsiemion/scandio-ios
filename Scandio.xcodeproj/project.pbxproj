@@ -1,0 +1,474 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0A7EFAEC2FF09B7DE89348B0 /* StoreCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B75C94D125B5D620A98CA2 /* StoreCategory.swift */; };
+		0DB3043C0C8BD5EA6105FF4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1CB7B7CC27EC3A5977E509D /* Assets.xcassets */; };
+		10E7332747672BFB48D0EC6C /* StoreLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E33E93C08F94A9F11FA733E /* StoreLogo.swift */; };
+		1C2412F1390F47E994FBEF5E /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0ECE5141BA6F6AD557FBB2 /* AppTheme.swift */; };
+		1EC51D751D05CE3743182459 /* ColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9A37DD4ED794C589E55E6F /* ColorHex.swift */; };
+		2D422221FE723718596EB88B /* CardSortOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403EF414C772C84C2EEFAF62 /* CardSortOrder.swift */; };
+		3BB81A21BF5AE68F990EC546 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 86508480313C8F0F6787215E /* Localizable.xcstrings */; };
+		3BF4A2EB872904D9921C079A /* BarcodePreviewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA6709231FE3EE6BC7F4DEE /* BarcodePreviewSection.swift */; };
+		43E3BD5CB7AC1592FB029EED /* UTType+Backup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0D46CCA32BFDDB42D97084 /* UTType+Backup.swift */; };
+		4AAA679C92B4AD240F0C84EC /* TileColorSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869F168D403473BD386A8C7 /* TileColorSection.swift */; };
+		4CAAAA2FA56E829F10500DF4 /* BackupDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55204539814AA851BADE1A9 /* BackupDocument.swift */; };
+		54C117B735C016262B3BCF7E /* BarcodeFullScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670C227671C601D84864E07C /* BarcodeFullScreenView.swift */; };
+		5692F2F029F892F96CC71C0F /* BrightnessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F742EF4AEC2B03410A2B3B /* BrightnessManager.swift */; };
+		5A873F635C954447102A3B8F /* AppLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F6B9BAECBD177074225558 /* AppLanguage.swift */; };
+		5B2F41FA9F8225CA2119F903 /* CardRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC71CCD0C90A2A1B566FAF6 /* CardRowView.swift */; };
+		64573356EE1919D5F5DD3DBC /* BarcodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F588322A2ADEE45CFE6C4DB /* BarcodeType.swift */; };
+		70727BDFF73685E2042AC08A /* EANRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C422530F7EB0B8E31AEB8A9 /* EANRenderer.swift */; };
+		72E080099E7E3A5610B4CDF6 /* ImageResizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27B2A8761197F03CDDBC556 /* ImageResizer.swift */; };
+		7620AC2BFE27862DAA30E86E /* StoreLogoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CDC557DFC4279282BC3692 /* StoreLogoSection.swift */; };
+		7A9278503AB9A1E9AAD05068 /* AICategoryAdvisor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F728384B65EBA02A081A5CB1 /* AICategoryAdvisor.swift */; };
+		90B6A1E16436978809082C4C /* CategorySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE809B29ADE97F69F419F11 /* CategorySection.swift */; };
+		ABF6AFC183948BDDBE6CD530 /* BarcodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1750985DA3AF0E13291CE8DE /* BarcodeScannerView.swift */; };
+		AD8C240B2FB17913FCD26F60 /* CardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B350E95C1D7CD8D5EBD732FA /* CardListView.swift */; };
+		B833B80F5B4B4BC5B9304FF6 /* AddCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83B1DB1C487B6666C97A583 /* AddCardView.swift */; };
+		BBB64A0A3B6B96D57EA1BD28 /* AddCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76299C3DE3C0D29D2FC1ADB6 /* AddCardModel.swift */; };
+		D03A8C191FB4CE9AC0E9CEED /* CardBasicsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549870029A5C3677056AA64F /* CardBasicsSection.swift */; };
+		DE9C07935872420B63BFF7A2 /* DuplicatePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0254138D6D73C6FC4345548C /* DuplicatePolicy.swift */; };
+		E0FF068C5D7F53F5151C67D8 /* BarcodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B8BCF55605FC0D68A7A51 /* BarcodeGenerator.swift */; };
+		E6265F04A8718ED59B4DBBB8 /* LoyaltyCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D280D5A83D73528BF5E01DCE /* LoyaltyCard.swift */; };
+		EDEF098F1F22D9D4EDD9C89E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8958137A6624A2318868758C /* SettingsView.swift */; };
+		F50D5D2C640CA2DD2D896FFC /* BackupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCA23C8DEACD20EB7ED9184 /* BackupManager.swift */; };
+		F791D542976B562FF1FEEA48 /* ScandioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A038B965D826DD0E90FBCA /* ScandioApp.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0254138D6D73C6FC4345548C /* DuplicatePolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicatePolicy.swift; sourceTree = "<group>"; };
+		0C422530F7EB0B8E31AEB8A9 /* EANRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EANRenderer.swift; sourceTree = "<group>"; };
+		10CDC557DFC4279282BC3692 /* StoreLogoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreLogoSection.swift; sourceTree = "<group>"; };
+		1750985DA3AF0E13291CE8DE /* BarcodeScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerView.swift; sourceTree = "<group>"; };
+		3E33E93C08F94A9F11FA733E /* StoreLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreLogo.swift; sourceTree = "<group>"; };
+		3EA6709231FE3EE6BC7F4DEE /* BarcodePreviewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodePreviewSection.swift; sourceTree = "<group>"; };
+		403EF414C772C84C2EEFAF62 /* CardSortOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSortOrder.swift; sourceTree = "<group>"; };
+		4869F168D403473BD386A8C7 /* TileColorSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileColorSection.swift; sourceTree = "<group>"; };
+		48826A16A68DC6257834F7AB /* Scandio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scandio.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C9A37DD4ED794C589E55E6F /* ColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHex.swift; sourceTree = "<group>"; };
+		549870029A5C3677056AA64F /* CardBasicsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBasicsSection.swift; sourceTree = "<group>"; };
+		54F742EF4AEC2B03410A2B3B /* BrightnessManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrightnessManager.swift; sourceTree = "<group>"; };
+		5BC71CCD0C90A2A1B566FAF6 /* CardRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRowView.swift; sourceTree = "<group>"; };
+		670C227671C601D84864E07C /* BarcodeFullScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeFullScreenView.swift; sourceTree = "<group>"; };
+		6D0ECE5141BA6F6AD557FBB2 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
+		6DE809B29ADE97F69F419F11 /* CategorySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySection.swift; sourceTree = "<group>"; };
+		76299C3DE3C0D29D2FC1ADB6 /* AddCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardModel.swift; sourceTree = "<group>"; };
+		86508480313C8F0F6787215E /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		8958137A6624A2318868758C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		99A038B965D826DD0E90FBCA /* ScandioApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScandioApp.swift; sourceTree = "<group>"; };
+		9F588322A2ADEE45CFE6C4DB /* BarcodeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeType.swift; sourceTree = "<group>"; };
+		B350E95C1D7CD8D5EBD732FA /* CardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListView.swift; sourceTree = "<group>"; };
+		BA0D46CCA32BFDDB42D97084 /* UTType+Backup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UTType+Backup.swift"; sourceTree = "<group>"; };
+		BF5B8BCF55605FC0D68A7A51 /* BarcodeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeGenerator.swift; sourceTree = "<group>"; };
+		C5F6B9BAECBD177074225558 /* AppLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguage.swift; sourceTree = "<group>"; };
+		CBCA23C8DEACD20EB7ED9184 /* BackupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupManager.swift; sourceTree = "<group>"; };
+		D27B2A8761197F03CDDBC556 /* ImageResizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResizer.swift; sourceTree = "<group>"; };
+		D280D5A83D73528BF5E01DCE /* LoyaltyCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyaltyCard.swift; sourceTree = "<group>"; };
+		D55204539814AA851BADE1A9 /* BackupDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupDocument.swift; sourceTree = "<group>"; };
+		E83B1DB1C487B6666C97A583 /* AddCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardView.swift; sourceTree = "<group>"; };
+		F1CB7B7CC27EC3A5977E509D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F3B75C94D125B5D620A98CA2 /* StoreCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCategory.swift; sourceTree = "<group>"; };
+		F728384B65EBA02A081A5CB1 /* AICategoryAdvisor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AICategoryAdvisor.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		073656BD8F9FCEF49D783300 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D280D5A83D73528BF5E01DCE /* LoyaltyCard.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5EE64C222FBE618098ABBCA7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E83B1DB1C487B6666C97A583 /* AddCardView.swift */,
+				670C227671C601D84864E07C /* BarcodeFullScreenView.swift */,
+				1750985DA3AF0E13291CE8DE /* BarcodeScannerView.swift */,
+				B350E95C1D7CD8D5EBD732FA /* CardListView.swift */,
+				5BC71CCD0C90A2A1B566FAF6 /* CardRowView.swift */,
+				8958137A6624A2318868758C /* SettingsView.swift */,
+				8420D7F68534BB1BC3574063 /* AddCard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		645561AD3D8A6B0F7C16A2CB /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C5F6B9BAECBD177074225558 /* AppLanguage.swift */,
+				6D0ECE5141BA6F6AD557FBB2 /* AppTheme.swift */,
+				9F588322A2ADEE45CFE6C4DB /* BarcodeType.swift */,
+				403EF414C772C84C2EEFAF62 /* CardSortOrder.swift */,
+				4C9A37DD4ED794C589E55E6F /* ColorHex.swift */,
+				0254138D6D73C6FC4345548C /* DuplicatePolicy.swift */,
+				D27B2A8761197F03CDDBC556 /* ImageResizer.swift */,
+				F3B75C94D125B5D620A98CA2 /* StoreCategory.swift */,
+				3E33E93C08F94A9F11FA733E /* StoreLogo.swift */,
+				BA0D46CCA32BFDDB42D97084 /* UTType+Backup.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		82F3E4909CD0AB7E6E4F5B86 /* Scandio */ = {
+			isa = PBXGroup;
+			children = (
+				F1CB7B7CC27EC3A5977E509D /* Assets.xcassets */,
+				86508480313C8F0F6787215E /* Localizable.xcstrings */,
+				99A038B965D826DD0E90FBCA /* ScandioApp.swift */,
+				073656BD8F9FCEF49D783300 /* Model */,
+				9657892DDAADEF4C29B856F6 /* Services */,
+				645561AD3D8A6B0F7C16A2CB /* Utilities */,
+				5EE64C222FBE618098ABBCA7 /* Views */,
+			);
+			path = Scandio;
+			sourceTree = "<group>";
+		};
+		8420D7F68534BB1BC3574063 /* AddCard */ = {
+			isa = PBXGroup;
+			children = (
+				76299C3DE3C0D29D2FC1ADB6 /* AddCardModel.swift */,
+				3EA6709231FE3EE6BC7F4DEE /* BarcodePreviewSection.swift */,
+				549870029A5C3677056AA64F /* CardBasicsSection.swift */,
+				6DE809B29ADE97F69F419F11 /* CategorySection.swift */,
+				10CDC557DFC4279282BC3692 /* StoreLogoSection.swift */,
+				4869F168D403473BD386A8C7 /* TileColorSection.swift */,
+			);
+			path = AddCard;
+			sourceTree = "<group>";
+		};
+		8F10C2946701A6332D9CA0C4 = {
+			isa = PBXGroup;
+			children = (
+				82F3E4909CD0AB7E6E4F5B86 /* Scandio */,
+				B7A22E2E088E3107AB09D880 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9657892DDAADEF4C29B856F6 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F728384B65EBA02A081A5CB1 /* AICategoryAdvisor.swift */,
+				D55204539814AA851BADE1A9 /* BackupDocument.swift */,
+				CBCA23C8DEACD20EB7ED9184 /* BackupManager.swift */,
+				BF5B8BCF55605FC0D68A7A51 /* BarcodeGenerator.swift */,
+				54F742EF4AEC2B03410A2B3B /* BrightnessManager.swift */,
+				0C422530F7EB0B8E31AEB8A9 /* EANRenderer.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		B7A22E2E088E3107AB09D880 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				48826A16A68DC6257834F7AB /* Scandio.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C0BD2F8F4D3DA71C1DF74896 /* Scandio */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F3CD0EF907D1E8485E4509BF /* Build configuration list for PBXNativeTarget "Scandio" */;
+			buildPhases = (
+				2C2F8BD4C1DA02B74D36988C /* Sources */,
+				3A49377C4ED13BFD154051C0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Scandio;
+			packageProductDependencies = (
+			);
+			productName = Scandio;
+			productReference = 48826A16A68DC6257834F7AB /* Scandio.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		77D358426EF7B3D9BE392155 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+			};
+			buildConfigurationList = 07D6AF64757A6A89EDA19F57 /* Build configuration list for PBXProject "Scandio" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+				pl,
+			);
+			mainGroup = 8F10C2946701A6332D9CA0C4;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = B7A22E2E088E3107AB09D880 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C0BD2F8F4D3DA71C1DF74896 /* Scandio */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3A49377C4ED13BFD154051C0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0DB3043C0C8BD5EA6105FF4A /* Assets.xcassets in Resources */,
+				3BB81A21BF5AE68F990EC546 /* Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2C2F8BD4C1DA02B74D36988C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A9278503AB9A1E9AAD05068 /* AICategoryAdvisor.swift in Sources */,
+				BBB64A0A3B6B96D57EA1BD28 /* AddCardModel.swift in Sources */,
+				B833B80F5B4B4BC5B9304FF6 /* AddCardView.swift in Sources */,
+				5A873F635C954447102A3B8F /* AppLanguage.swift in Sources */,
+				1C2412F1390F47E994FBEF5E /* AppTheme.swift in Sources */,
+				4CAAAA2FA56E829F10500DF4 /* BackupDocument.swift in Sources */,
+				F50D5D2C640CA2DD2D896FFC /* BackupManager.swift in Sources */,
+				54C117B735C016262B3BCF7E /* BarcodeFullScreenView.swift in Sources */,
+				E0FF068C5D7F53F5151C67D8 /* BarcodeGenerator.swift in Sources */,
+				3BF4A2EB872904D9921C079A /* BarcodePreviewSection.swift in Sources */,
+				ABF6AFC183948BDDBE6CD530 /* BarcodeScannerView.swift in Sources */,
+				64573356EE1919D5F5DD3DBC /* BarcodeType.swift in Sources */,
+				5692F2F029F892F96CC71C0F /* BrightnessManager.swift in Sources */,
+				D03A8C191FB4CE9AC0E9CEED /* CardBasicsSection.swift in Sources */,
+				AD8C240B2FB17913FCD26F60 /* CardListView.swift in Sources */,
+				5B2F41FA9F8225CA2119F903 /* CardRowView.swift in Sources */,
+				2D422221FE723718596EB88B /* CardSortOrder.swift in Sources */,
+				90B6A1E16436978809082C4C /* CategorySection.swift in Sources */,
+				1EC51D751D05CE3743182459 /* ColorHex.swift in Sources */,
+				DE9C07935872420B63BFF7A2 /* DuplicatePolicy.swift in Sources */,
+				70727BDFF73685E2042AC08A /* EANRenderer.swift in Sources */,
+				72E080099E7E3A5610B4CDF6 /* ImageResizer.swift in Sources */,
+				E6265F04A8718ED59B4DBBB8 /* LoyaltyCard.swift in Sources */,
+				F791D542976B562FF1FEEA48 /* ScandioApp.swift in Sources */,
+				EDEF098F1F22D9D4EDD9C89E /* SettingsView.swift in Sources */,
+				0A7EFAEC2FF09B7DE89348B0 /* StoreCategory.swift in Sources */,
+				10E7332747672BFB48D0EC6C /* StoreLogo.swift in Sources */,
+				7620AC2BFE27862DAA30E86E /* StoreLogoSection.swift in Sources */,
+				4AAA679C92B4AD240F0C84EC /* TileColorSection.swift in Sources */,
+				43E3BD5CB7AC1592FB029EED /* UTType+Backup.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0EE822A0899715244F092F22 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		6918E35FCB3F44549FAEA313 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W7K68X86XD;
+				INFOPLIST_FILE = Scandio/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.shopping";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = pro.siemion.scandio;
+				PRODUCT_NAME = Scandio;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		85058F9A7A1395F396079A7B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		CC146339593E1FA01EF72DEA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W7K68X86XD;
+				INFOPLIST_FILE = Scandio/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.shopping";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = pro.siemion.scandio;
+				PRODUCT_NAME = Scandio;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		07D6AF64757A6A89EDA19F57 /* Build configuration list for PBXProject "Scandio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				85058F9A7A1395F396079A7B /* Debug */,
+				0EE822A0899715244F092F22 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		F3CD0EF907D1E8485E4509BF /* Build configuration list for PBXNativeTarget "Scandio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6918E35FCB3F44549FAEA313 /* Debug */,
+				CC146339593E1FA01EF72DEA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 77D358426EF7B3D9BE392155 /* Project object */;
+}
