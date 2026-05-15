@@ -24,6 +24,7 @@ final class ScannerViewController: UIViewController, AVCaptureMetadataOutputObje
     private let captureSession = AVCaptureSession()
     private var previewLayer: AVCaptureVideoPreviewLayer?
     private var hasReported = false
+    private let haptic = UINotificationFeedbackGenerator()
 
     private static let supportedTypes: [AVMetadataObject.ObjectType] = [
         .ean13, .ean8, .code128, .interleaved2of5, .qr, .pdf417, .aztec
@@ -32,6 +33,7 @@ final class ScannerViewController: UIViewController, AVCaptureMetadataOutputObje
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
+        haptic.prepare()
         checkPermissionAndSetup()
     }
 
@@ -189,8 +191,7 @@ final class ScannerViewController: UIViewController, AVCaptureMetadataOutputObje
         let barcodeType = mapMetadataType(metadata.type)
 
         // Haptic feedback on successful scan
-        let generator = UINotificationFeedbackGenerator()
-        generator.notificationOccurred(.success)
+        haptic.notificationOccurred(.success)
 
         onScanned?(value, barcodeType)
     }

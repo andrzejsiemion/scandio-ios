@@ -74,19 +74,35 @@ enum StoreLogo {
         "circle k":       Info(icon: "⛽", isEmoji: true, colorHex: "ED1C24"),
     ]
 
+    /// Memoizes lookups by normalized name. The partial-match path is an O(n)
+    /// dict scan and `lookup` is called from every CardRowView body, so we cache
+    /// per-name. Annotated `@MainActor` because every caller runs on main and
+    /// it gives us free synchronization.
+    @MainActor private static var cache: [String: Info?] = [:]
+
     /// Look up store info by card name. Matches partial/case-insensitive.
+    @MainActor
     static func lookup(_ name: String) -> Info? {
         let lowered = name.lowercased().trimmingCharacters(in: .whitespaces)
+        if lowered.isEmpty { return nil }
+        if let cached = cache[lowered] { return cached }
+        let result = computeLookup(lowered)
+        cache[lowered] = result
+        return result
+    }
+
+    private static func computeLookup(_ lowered: String) -> Info? {
         // Exact match first
         if let info = knownStores[lowered] { return info }
         // Partial match — check if the card name contains a known store name
-        for (key, info) in knownStores {
-            if lowered.contains(key) { return info }
+        for (key, info) in knownStores where lowered.contains(key) {
+            return info
         }
         return nil
     }
 
     /// Get the brand color for a card name, or nil if unknown.
+    @MainActor
     static func brandColorHex(for name: String) -> String? {
         lookup(name)?.colorHex
     }

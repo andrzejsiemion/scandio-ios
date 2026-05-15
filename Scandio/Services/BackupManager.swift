@@ -125,8 +125,15 @@ enum BackupManager {
         var merged = 0
         var skipped = 0
 
+        // Index existing cards by (name, cardNumber) for O(1) duplicate lookup.
+        var existingIndex: [String: LoyaltyCard] = [:]
+        existingIndex.reserveCapacity(existing.count)
+        for card in existing {
+            existingIndex[Self.dupKey(name: card.name, number: card.cardNumber)] = card
+        }
+
         for card in incoming {
-            let match = existing.first { $0.name == card.name && $0.cardNumber == card.cardNumber }
+            let match = existingIndex[Self.dupKey(name: card.name, number: card.cardNumber)]
             switch (match, policy) {
             case (nil, _):
                 modelContext.insert(card)
@@ -153,9 +160,20 @@ enum BackupManager {
 
     /// How many of `incoming` already exist in `existing` by (name, cardNumber).
     static func duplicateCount(of incoming: [LoyaltyCard], in existing: [LoyaltyCard]) -> Int {
-        incoming.reduce(0) { count, card in
-            existing.contains { $0.name == card.name && $0.cardNumber == card.cardNumber } ? count + 1 : count
+        var existingKeys: Set<String> = []
+        existingKeys.reserveCapacity(existing.count)
+        for card in existing {
+            existingKeys.insert(dupKey(name: card.name, number: card.cardNumber))
         }
+        return incoming.reduce(0) { count, card in
+            existingKeys.contains(dupKey(name: card.name, number: card.cardNumber)) ? count + 1 : count
+        }
+    }
+
+    /// Single-key encoding for the (name, cardNumber) duplicate identity.
+    /// `\u{1F}` (Unit Separator) cannot appear in user-entered names/numbers.
+    private static func dupKey(name: String, number: String) -> String {
+        "\(name)\u{1F}\(number)"
     }
 
     enum ImportResult {

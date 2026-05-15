@@ -4,7 +4,7 @@ import SwiftData
 struct CardListView: View {
     @Query private var cards: [LoyaltyCard]
     @Environment(\.modelContext) private var modelContext
-    @AppStorage("cardSortOrder") private var sortOrderRaw: String = CardSortOrder.alphabetical.rawValue
+    @AppStorage(DefaultsKey.cardSortOrder) private var sortOrderRaw: String = CardSortOrder.alphabetical.rawValue
 
     @State private var showingAddCard = false
     @State private var cardToEdit: LoyaltyCard?
@@ -19,7 +19,7 @@ struct CardListView: View {
     @State private var pendingImport: [LoyaltyCard]?
     @State private var pendingDuplicateCount = 0
     @State private var showDuplicateDialog = false
-    @AppStorage("duplicatePolicy") private var duplicatePolicyRaw: String = DuplicatePolicy.ask.rawValue
+    @AppStorage(DefaultsKey.duplicatePolicy) private var duplicatePolicyRaw: String = DuplicatePolicy.ask.rawValue
 
     private let columns = [
         GridItem(.flexible(), spacing: 12),
@@ -84,7 +84,7 @@ struct CardListView: View {
                             }
                         }
                         .padding(12)
-                        .animation(.default, value: filteredCards.map(\.id))
+                        .animation(.default, value: filteredCards.count)
                     }
                 }
             }
@@ -254,8 +254,6 @@ struct CardListView: View {
 
     @ViewBuilder
     private func quickAccessCard(_ card: LoyaltyCard) -> some View {
-        let is2D = card.barcodeType == .qrCode || card.barcodeType == .aztec
-        let barcodeSize = is2D ? CGSize(width: 200, height: 200) : CGSize(width: 400, height: 120)
         let barcodeHeight: CGFloat = 80
 
         Button {
@@ -265,7 +263,7 @@ struct CardListView: View {
                 if let image = BarcodeGenerator.shared.generate(
                     from: card.cardNumber,
                     type: card.barcodeType,
-                    size: barcodeSize
+                    target: .quickAccess
                 ) {
                     Image(uiImage: image)
                         .interpolation(.none)
@@ -299,21 +297,48 @@ struct CardListView: View {
     // MARK: - Actions
 
     private func openCard(_ card: LoyaltyCard) {
-        let generator = UIImpactFeedbackGenerator(style: .medium)
-        generator.impactOccurred()
+        Self.openCardHaptic.impactOccurred()
         card.lastUsedAt = .now
         selectedCard = card
     }
 
+    /// Held + prepared so tap-to-open feels instantaneous instead of paying
+    /// the haptic engine spin-up on every tap.
+    private static let openCardHaptic: UIImpactFeedbackGenerator = {
+        let g = UIImpactFeedbackGenerator(style: .medium)
+        g.prepare()
+        return g
+    }()
+
     private func precacheBarcodeThumbnails() {
-        let cardsData = cards.map { (number: $0.cardNumber, type: $0.barcodeType) }
+        // Capture value-type snapshots so the detached task doesn't touch the
+        // SwiftData models off the main actor.
+        let snapshots = cards.map {
+            (number: $0.cardNumber, type: $0.barcodeType, isFavorite: $0.isFavorite)
+        }
         Task.detached(priority: .utility) {
-            for card in cardsData {
-                _ = BarcodeGenerator.shared.generate(
-                    from: card.number,
-                    type: card.type,
-                    size: CGSize(width: 200, height: 80)
-                )
+            await withTaskGroup(of: Void.self) { group in
+                for card in snapshots {
+                    // Full-screen size is the most expensive consumer — precache it
+                    // for every card so opening the detail view is a cache hit.
+                    group.addTask {
+                        _ = BarcodeGenerator.shared.generate(
+                            from: card.number,
+                            type: card.type,
+                            target: .fullScreen
+                        )
+                    }
+                    // Favorites also show in the quick-access carousel.
+                    if card.isFavorite {
+                        group.addTask {
+                            _ = BarcodeGenerator.shared.generate(
+                                from: card.number,
+                                type: card.type,
+                                target: .quickAccess
+                            )
+                        }
+                    }
+                }
             }
         }
     }

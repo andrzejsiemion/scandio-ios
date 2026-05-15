@@ -33,12 +33,14 @@
 		B833B80F5B4B4BC5B9304FF6 /* AddCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83B1DB1C487B6666C97A583 /* AddCardView.swift */; };
 		BBB64A0A3B6B96D57EA1BD28 /* AddCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76299C3DE3C0D29D2FC1ADB6 /* AddCardModel.swift */; };
 		D03A8C191FB4CE9AC0E9CEED /* CardBasicsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549870029A5C3677056AA64F /* CardBasicsSection.swift */; };
+		D1D1FA5DC7DE90E4D47AB871 /* BarcodeRenderTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE6E448C35DA385808A42DC /* BarcodeRenderTarget.swift */; };
 		DE9C07935872420B63BFF7A2 /* DuplicatePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0254138D6D73C6FC4345548C /* DuplicatePolicy.swift */; };
 		E0FF068C5D7F53F5151C67D8 /* BarcodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B8BCF55605FC0D68A7A51 /* BarcodeGenerator.swift */; };
 		E6265F04A8718ED59B4DBBB8 /* LoyaltyCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D280D5A83D73528BF5E01DCE /* LoyaltyCard.swift */; };
 		EDEF098F1F22D9D4EDD9C89E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8958137A6624A2318868758C /* SettingsView.swift */; };
 		F50D5D2C640CA2DD2D896FFC /* BackupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCA23C8DEACD20EB7ED9184 /* BackupManager.swift */; };
 		F791D542976B562FF1FEEA48 /* ScandioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A038B965D826DD0E90FBCA /* ScandioApp.swift */; };
+		F8A91C0D8A1FC314842D4419 /* DefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974079F023F851479D8974C5 /* DefaultsKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,7 +63,9 @@
 		76299C3DE3C0D29D2FC1ADB6 /* AddCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardModel.swift; sourceTree = "<group>"; };
 		86508480313C8F0F6787215E /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		8958137A6624A2318868758C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		974079F023F851479D8974C5 /* DefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsKey.swift; sourceTree = "<group>"; };
 		99A038B965D826DD0E90FBCA /* ScandioApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScandioApp.swift; sourceTree = "<group>"; };
+		9DE6E448C35DA385808A42DC /* BarcodeRenderTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeRenderTarget.swift; sourceTree = "<group>"; };
 		9F588322A2ADEE45CFE6C4DB /* BarcodeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeType.swift; sourceTree = "<group>"; };
 		B350E95C1D7CD8D5EBD732FA /* CardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListView.swift; sourceTree = "<group>"; };
 		BA0D46CCA32BFDDB42D97084 /* UTType+Backup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UTType+Backup.swift"; sourceTree = "<group>"; };
@@ -105,9 +109,11 @@
 			children = (
 				C5F6B9BAECBD177074225558 /* AppLanguage.swift */,
 				6D0ECE5141BA6F6AD557FBB2 /* AppTheme.swift */,
+				9DE6E448C35DA385808A42DC /* BarcodeRenderTarget.swift */,
 				9F588322A2ADEE45CFE6C4DB /* BarcodeType.swift */,
 				403EF414C772C84C2EEFAF62 /* CardSortOrder.swift */,
 				4C9A37DD4ED794C589E55E6F /* ColorHex.swift */,
+				974079F023F851479D8974C5 /* DefaultsKey.swift */,
 				0254138D6D73C6FC4345548C /* DuplicatePolicy.swift */,
 				D27B2A8761197F03CDDBC556 /* ImageResizer.swift */,
 				F3B75C94D125B5D620A98CA2 /* StoreCategory.swift */,
@@ -250,6 +256,7 @@
 				54C117B735C016262B3BCF7E /* BarcodeFullScreenView.swift in Sources */,
 				E0FF068C5D7F53F5151C67D8 /* BarcodeGenerator.swift in Sources */,
 				3BF4A2EB872904D9921C079A /* BarcodePreviewSection.swift in Sources */,
+				D1D1FA5DC7DE90E4D47AB871 /* BarcodeRenderTarget.swift in Sources */,
 				ABF6AFC183948BDDBE6CD530 /* BarcodeScannerView.swift in Sources */,
 				64573356EE1919D5F5DD3DBC /* BarcodeType.swift in Sources */,
 				5692F2F029F892F96CC71C0F /* BrightnessManager.swift in Sources */,
@@ -259,6 +266,7 @@
 				2D422221FE723718596EB88B /* CardSortOrder.swift in Sources */,
 				90B6A1E16436978809082C4C /* CategorySection.swift in Sources */,
 				1EC51D751D05CE3743182459 /* ColorHex.swift in Sources */,
+				F8A91C0D8A1FC314842D4419 /* DefaultsKey.swift in Sources */,
 				DE9C07935872420B63BFF7A2 /* DuplicatePolicy.swift in Sources */,
 				70727BDFF73685E2042AC08A /* EANRenderer.swift in Sources */,
 				72E080099E7E3A5610B4CDF6 /* ImageResizer.swift in Sources */,
@@ -341,12 +349,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = W7K68X86XD;
 				INFOPLIST_FILE = Scandio/Info.plist;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.shopping";
+				INFOPLIST_KEY_CFBundleDisplayName = Scandio;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = pro.siemion.scandio;
 				PRODUCT_NAME = Scandio;
 				SDKROOT = iphoneos;
@@ -430,12 +438,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = W7K68X86XD;
 				INFOPLIST_FILE = Scandio/Info.plist;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.shopping";
+				INFOPLIST_KEY_CFBundleDisplayName = Scandio;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = pro.siemion.scandio;
 				PRODUCT_NAME = Scandio;
 				SDKROOT = iphoneos;

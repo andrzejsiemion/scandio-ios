@@ -4,7 +4,7 @@ import SwiftData
 @main
 struct ScandioApp: App {
     @Environment(\.scenePhase) private var scenePhase
-    @AppStorage("appTheme") private var appThemeRaw: String = AppTheme.system.rawValue
+    @AppStorage(DefaultsKey.appTheme) private var appThemeRaw: String = AppTheme.system.rawValue
 
     private var appTheme: AppTheme {
         AppTheme(rawValue: appThemeRaw) ?? .system

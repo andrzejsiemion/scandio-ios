@@ -3,10 +3,16 @@ import SwiftUI
 struct BarcodePreviewSection: View {
     @Bindable var model: AddCardModel
 
+    @State private var image: UIImage?
+
+    private var previewKey: String {
+        "\(model.cardNumber)|\(model.barcodeType.rawValue)"
+    }
+
     var body: some View {
         if !model.cardNumber.isEmpty {
             Section("Preview") {
-                if let image = barcodeImage {
+                if let image {
                     HStack {
                         Spacer()
                         Image(uiImage: image)
@@ -23,15 +29,21 @@ struct BarcodePreviewSection: View {
                         .foregroundStyle(.secondary)
                 }
             }
+            .task(id: previewKey) {
+                await regenerate()
+            }
         }
     }
 
-    private var barcodeImage: UIImage? {
-        guard case .success(let number) = model.validatedNumber() else { return nil }
-        return BarcodeGenerator.shared.generate(
-            from: number,
-            type: model.barcodeType,
-            size: CGSize(width: 300, height: 120)
-        )
+    private func regenerate() async {
+        guard case .success(let number) = model.validatedNumber() else {
+            image = nil
+            return
+        }
+        let type = model.barcodeType
+        let generated = await Task.detached(priority: .userInitiated) {
+            BarcodeGenerator.shared.generate(from: number, type: type, target: .preview)
+        }.value
+        image = generated
     }
 }

@@ -8,12 +8,12 @@ final class BrightnessManager {
     private var savedBrightness: CGFloat?
 
     func activate() {
-        let enabled = UserDefaults.standard.object(forKey: "brightnessEnabled") as? Bool ?? true
+        let enabled = UserDefaults.standard.object(forKey: DefaultsKey.brightnessEnabled) as? Bool ?? true
         if enabled {
             if savedBrightness == nil {
                 savedBrightness = UIScreen.main.brightness
             }
-            let level = UserDefaults.standard.object(forKey: "brightnessLevel") as? Double ?? 1.0
+            let level = UserDefaults.standard.object(forKey: DefaultsKey.brightnessLevel) as? Double ?? 1.0
             UIScreen.main.brightness = CGFloat(level)
         }
         UIApplication.shared.isIdleTimerDisabled = true

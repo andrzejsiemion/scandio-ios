@@ -113,10 +113,28 @@ final class AddCardModel {
     }
 
     private func colorToHex(_ color: Color) -> String {
+        // Force sRGB so P3 / display-P3 / gray color spaces don't silently
+        // fail through `getRed` and produce #000000.
         let resolved = UIColor(color)
-        var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0
-        resolved.getRed(&r, green: &g, blue: &b, alpha: nil)
-        return String(format: "%02X%02X%02X", Int(r * 255), Int(g * 255), Int(b * 255))
+        var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+        guard resolved.getRed(&r, green: &g, blue: &b, alpha: &a) else {
+            // Fall back to converting via CGColor → sRGB.
+            if let srgb = resolved.cgColor.converted(
+                to: CGColorSpace(name: CGColorSpace.sRGB)!,
+                intent: .defaultIntent,
+                options: nil
+            ), let components = srgb.components, components.count >= 3 {
+                return String(
+                    format: "%02X%02X%02X",
+                    Int(components[0] * 255),
+                    Int(components[1] * 255),
+                    Int(components[2] * 255)
+                )
+            }
+            return "007AFF"
+        }
+        let clamp: (CGFloat) -> Int = { Int((min(max($0, 0), 1) * 255).rounded()) }
+        return String(format: "%02X%02X%02X", clamp(r), clamp(g), clamp(b))
     }
 
     // MARK: - Field handlers
@@ -270,12 +288,11 @@ final class AddCardModel {
             if Task.isCancelled { return }
             let suggestion = await AICategoryAdvisor.suggest(for: trimmed)
             if Task.isCancelled { return }
-            await MainActor.run {
-                guard let self else { return }
-                self.isLoadingAISuggestion = false
-                if self.selectedCategory == nil, let suggestion {
-                    self.selectedCategory = suggestion
-                }
+            // Task inherits @MainActor from `self`, so no MainActor.run needed.
+            guard let self else { return }
+            self.isLoadingAISuggestion = false
+            if self.selectedCategory == nil, let suggestion {
+                self.selectedCategory = suggestion
             }
         }
     }

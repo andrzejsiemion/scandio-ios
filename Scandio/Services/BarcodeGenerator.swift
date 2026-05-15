@@ -7,7 +7,11 @@ final class BarcodeGenerator: @unchecked Sendable {
     static let shared = BarcodeGenerator()
 
     private let cache = NSCache<NSString, UIImage>()
-    private let renderQueue = DispatchQueue(label: "com.cards.barcodeRenderer")
+
+    /// CIContext is thread-safe per Apple's documentation and is the expensive
+    /// object to construct (Metal pipeline setup). One shared instance is reused
+    /// across all renders — concurrent calls are fine.
+    private let ciContext = CIContext()
 
     private init() {
         cache.countLimit = 50
@@ -49,9 +53,14 @@ final class BarcodeGenerator: @unchecked Sendable {
         }
 
         if let image {
-            cache.setObject(image, forKey: cacheKey)
+            cache.setObject(image, forKey: cacheKey, cost: image.memoryCost)
         }
         return image
+    }
+
+    /// Convenience wrapper that resolves the render size from a `BarcodeRenderTarget`.
+    func generate(from string: String, type: BarcodeType, target: BarcodeRenderTarget) -> UIImage? {
+        generate(from: string, type: type, size: target.size(for: type))
     }
 
     /// Clear the cache (e.g. on memory warning).
@@ -108,12 +117,19 @@ final class BarcodeGenerator: @unchecked Sendable {
 
         bitmapContext.interpolationQuality = .none
 
-        let context = CIContext()
-        guard let cgImage = context.createCGImage(ciImage, from: extent) else { return nil }
+        guard let cgImage = ciContext.createCGImage(ciImage, from: extent) else { return nil }
 
         bitmapContext.draw(cgImage, in: CGRect(x: 0, y: 0, width: outputWidth, height: outputHeight))
 
         guard let result = bitmapContext.makeImage() else { return nil }
         return UIImage(cgImage: result)
+    }
+}
+
+private extension UIImage {
+    /// Approximate bytes the bitmap occupies — used as NSCache cost.
+    var memoryCost: Int {
+        guard let cg = cgImage else { return 0 }
+        return cg.bytesPerRow * cg.height
     }
 }

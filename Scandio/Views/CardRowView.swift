@@ -3,6 +3,8 @@ import SwiftUI
 struct CardRowView: View {
     let card: LoyaltyCard
 
+    @State private var logoImage: UIImage?
+
     private var cardColor: Color {
         Color(hex: card.colorHex)
     }
@@ -10,8 +12,8 @@ struct CardRowView: View {
     var body: some View {
         VStack(spacing: 8) {
             // Logo: uploaded image > customIcon > store emoji > generic icon
-            if let data = card.logoData, let uiImage = UIImage(data: data) {
-                Image(uiImage: uiImage)
+            if let logoImage {
+                Image(uiImage: logoImage)
                     .resizable()
                     .scaledToFill()
                     .frame(width: 56, height: 56)
@@ -45,5 +47,17 @@ struct CardRowView: View {
                 .fill(cardColor.gradient)
         )
         .clipShape(RoundedRectangle(cornerRadius: 14))
+        .task(id: card.logoData) {
+            // Decode JPEG off the main thread, once per data change.
+            // Without this, UIImage(data:) ran inside `body` on every render.
+            guard let data = card.logoData else {
+                logoImage = nil
+                return
+            }
+            let decoded = await Task.detached(priority: .userInitiated) {
+                UIImage(data: data)
+            }.value
+            logoImage = decoded
+        }
     }
 }

@@ -6,12 +6,12 @@ struct SettingsView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var cards: [LoyaltyCard]
 
-    @AppStorage("cardSortOrder") private var sortOrder: String = CardSortOrder.alphabetical.rawValue
-    @AppStorage("brightnessEnabled") private var brightnessEnabled: Bool = true
-    @AppStorage("brightnessLevel") private var brightnessLevel: Double = 1.0
-    @AppStorage("appTheme") private var appTheme: String = AppTheme.system.rawValue
-    @AppStorage("appLanguage") private var storedLanguage: String = AppLanguage.en.rawValue
-    @AppStorage("duplicatePolicy") private var duplicatePolicyRaw: String = DuplicatePolicy.ask.rawValue
+    @AppStorage(DefaultsKey.cardSortOrder) private var sortOrder: String = CardSortOrder.alphabetical.rawValue
+    @AppStorage(DefaultsKey.brightnessEnabled) private var brightnessEnabled: Bool = true
+    @AppStorage(DefaultsKey.brightnessLevel) private var brightnessLevel: Double = 1.0
+    @AppStorage(DefaultsKey.appTheme) private var appTheme: String = AppTheme.system.rawValue
+    @AppStorage(DefaultsKey.appLanguage) private var storedLanguage: String = AppLanguage.en.rawValue
+    @AppStorage(DefaultsKey.duplicatePolicy) private var duplicatePolicyRaw: String = DuplicatePolicy.ask.rawValue
 
     @State private var pickerLanguage: String = AppLanguage.en.rawValue
     @State private var showRestartAlert = false
@@ -181,14 +181,11 @@ struct SettingsView: View {
 
     // MARK: - Backup helpers
 
-    private static let dateFormatter: DateFormatter = {
-        let f = DateFormatter()
-        f.dateFormat = "yyyy-MM-dd"
-        return f
-    }()
-
+    /// Locale-stable filename date (YYYY-MM-DD). Using ISO8601 avoids the
+    /// locale-dependent surprises a custom-pattern `DateFormatter` would
+    /// introduce in non-US locales.
     private static var formattedDate: String {
-        dateFormatter.string(from: Date())
+        Date.now.formatted(.iso8601.year().month().day().dateSeparator(.dash))
     }
 
     private func exportCards() {

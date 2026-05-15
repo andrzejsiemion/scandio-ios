@@ -4,6 +4,9 @@ struct BarcodeFullScreenView: View {
     let card: LoyaltyCard
     var onDismiss: () -> Void
 
+    @State private var barcodeImage: UIImage?
+    @State private var generationFailed = false
+
     var body: some View {
         ZStack(alignment: .topTrailing) {
             Color.white.ignoresSafeArea()
@@ -21,23 +24,22 @@ struct BarcodeFullScreenView: View {
                 // between .resizable / .scaledToFit / VStack.
                 HStack(spacing: 0) {
                     Spacer(minLength: 0)
-                    if let image = BarcodeGenerator.shared.generate(
-                        from: card.cardNumber,
-                        type: card.barcodeType,
-                        size: barcodeSize
-                    ) {
+                    if let image = barcodeImage {
                         Image(uiImage: image)
                             .interpolation(.none)
                             .resizable()
                             .scaledToFit()
                             .frame(width: barcodeSize.width, height: barcodeSize.height)
-                    } else {
+                    } else if generationFailed {
                         VStack(spacing: 8) {
                             Image(systemName: "exclamationmark.triangle")
                                 .font(.largeTitle)
                             Text("Could not generate barcode")
                         }
                         .foregroundStyle(.red)
+                    } else {
+                        ProgressView()
+                            .frame(width: barcodeSize.width, height: barcodeSize.height)
                     }
                     Spacer(minLength: 0)
                 }
@@ -79,15 +81,13 @@ struct BarcodeFullScreenView: View {
         .onDisappear {
             BrightnessManager.shared.deactivate()
         }
+        .task {
+            await loadBarcode()
+        }
     }
 
     private var barcodeSize: CGSize {
-        switch card.barcodeType {
-        case .qrCode, .aztec:
-            return CGSize(width: 280, height: 280)
-        default:
-            return CGSize(width: 340, height: 180)
-        }
+        BarcodeRenderTarget.fullScreen.size(for: card.barcodeType)
     }
 
     /// Format the card number with spaces every 4 digits for readability.
@@ -101,5 +101,18 @@ struct BarcodeFullScreenView: View {
             let end = number.index(start, offsetBy: min(4, number.count - i))
             return String(number[start..<end])
         }.joined(separator: " ")
+    }
+
+    private func loadBarcode() async {
+        let number = card.cardNumber
+        let type = card.barcodeType
+        let image = await Task.detached(priority: .userInitiated) {
+            BarcodeGenerator.shared.generate(from: number, type: type, target: .fullScreen)
+        }.value
+        if let image {
+            barcodeImage = image
+        } else {
+            generationFailed = true
+        }
     }
 }

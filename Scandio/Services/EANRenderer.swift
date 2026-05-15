@@ -206,30 +206,32 @@ enum EANRenderer {
         let narrow = 1
         let wide = 3
         var pattern: [Int] = []
+        pattern.reserveCapacity(8 + digits.count * 9 + 5)
+
+        @inline(__always) func append(_ value: Int, count: Int) {
+            for _ in 0..<count { pattern.append(value) }
+        }
 
         // Start pattern: narrow black, narrow white, narrow black, narrow white
-        pattern.append(contentsOf: [Int](repeating: 1, count: narrow)) // bar
-        pattern.append(contentsOf: [Int](repeating: 0, count: narrow)) // space
-        pattern.append(contentsOf: [Int](repeating: 1, count: narrow)) // bar
-        pattern.append(contentsOf: [Int](repeating: 0, count: narrow)) // space
+        append(1, count: narrow)
+        append(0, count: narrow)
+        append(1, count: narrow)
+        append(0, count: narrow)
 
         // Encode digit pairs
         for i in stride(from: 0, to: digits.count, by: 2) {
-            let d1 = itfPatterns[digits[i]]     // bars
-            let d2 = itfPatterns[digits[i + 1]] // spaces
-
+            let bars = itfPatterns[digits[i]]
+            let spaces = itfPatterns[digits[i + 1]]
             for j in 0..<5 {
-                let barWidth = d1[j] == 1 ? wide : narrow
-                let spaceWidth = d2[j] == 1 ? wide : narrow
-                pattern.append(contentsOf: [Int](repeating: 1, count: barWidth))
-                pattern.append(contentsOf: [Int](repeating: 0, count: spaceWidth))
+                append(1, count: bars[j] == 1 ? wide : narrow)
+                append(0, count: spaces[j] == 1 ? wide : narrow)
             }
         }
 
         // Stop pattern: wide bar, narrow space, narrow bar
-        pattern.append(contentsOf: [Int](repeating: 1, count: wide))
-        pattern.append(contentsOf: [Int](repeating: 0, count: narrow))
-        pattern.append(contentsOf: [Int](repeating: 1, count: narrow))
+        append(1, count: wide)
+        append(0, count: narrow)
+        append(1, count: narrow)
 
         return pattern
     }
@@ -247,14 +249,15 @@ enum EANRenderer {
             UIColor.white.setFill()
             ctx.fill(CGRect(origin: .zero, size: size))
 
-            // Draw black bars
+            // Draw black bars on pixel-aligned start/end positions so adjacent
+            // bars don't overlap (the previous `ceil(moduleWidth)` approach
+            // produced overlapping rects and uneven anti-aliasing).
             UIColor.black.setFill()
-            for (i, module) in pattern.enumerated() {
-                if module == 1 {
-                    let x = CGFloat(i) * moduleWidth
-                    let rect = CGRect(x: x, y: 0, width: ceil(moduleWidth), height: height)
-                    ctx.fill(rect)
-                }
+            for (i, module) in pattern.enumerated() where module == 1 {
+                let xStart = (CGFloat(i) * moduleWidth).rounded()
+                let xEnd = (CGFloat(i + 1) * moduleWidth).rounded()
+                let rect = CGRect(x: xStart, y: 0, width: xEnd - xStart, height: height)
+                ctx.fill(rect)
             }
         }
     }
